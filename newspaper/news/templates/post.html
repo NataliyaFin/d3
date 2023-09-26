@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'flatpages/default.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block idpage %}news{% endblock %}
+
+{% block title %}
+{{ post.title|censor:'*' }}
+{% endblock %}
+
+{% block header %}
+{{ post.title|censor:'*' }}
+{% endblock %}
+
+{% block count %}
+Дата публикации: {{ post.dateCreated|date:'d E Y г. H:i:s' }}
+{% endblock %}
+
+{% block image %}
+{% static 'assets/new.jpg' %}
+{% endblock %}
+
+{% block content %}
+<hr>
+<p class="fs-5 mb-4">{{ post.text|censor:'*' }}</p>
+<p class="block-btn"><a class="btn" href="/news">Вернуться к списку новостей</a></p>
+{% endblock content %}
